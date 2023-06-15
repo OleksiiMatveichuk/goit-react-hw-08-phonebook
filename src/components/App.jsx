@@ -1,7 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ContactForm } from './ContactForm';
-import { Filter } from './Filter';
-import { ContactList } from './ContactList';
+import { Suspense, lazy } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import Loader from './Loader';
+
+const Register = lazy(() => import('pages/Register'));
+const LogIn = lazy(() => import('pages/LogIn'));
+const Contacts = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
   return (
@@ -15,11 +20,14 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };

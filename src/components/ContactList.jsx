@@ -4,7 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter, selectIsLoading } from 'redux/selectors';
 
-import { deleteContacts, fetchContacts } from 'service/phoneboockAPI';
+// import { deleteContacts, fetchContacts } from 'service/phoneboockAPI';
 export const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export const ContactList = () => {
   const filteredContacts = useSelector(selectFilter);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    // dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
@@ -31,7 +31,7 @@ export const ContactList = () => {
             variant="secondary"
             type="button"
             name={el.id}
-            onClick={() => dispatch(deleteContacts(el.id))}
+            // onClick={() => dispatch(deleteContacts(el.id))}
           >
             Delete
           </Button>

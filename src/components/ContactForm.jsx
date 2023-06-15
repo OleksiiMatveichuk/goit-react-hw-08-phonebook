@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts } from 'service/phoneboockAPI';
+// import { addContacts } from 'service/phoneboockAPI';
 import { selectContacts } from 'redux/selectors';
 
 export const ContactForm = () => {
@@ -39,7 +39,7 @@ export const ContactForm = () => {
       return;
     }
     const contact = { name, number };
-    dispatch(addContacts(contact));
+    // dispatch(addContacts(contact));
 
     setName('');
     setNumber('');

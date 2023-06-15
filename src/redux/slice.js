@@ -19,31 +19,29 @@ const phonebookSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchContacts.pending]: state => {
-      state.isLoading = true;
-    },
-    [fetchContacts.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.items = payload;
-    },
+    // [fetchContacts.pending]: state => {
+    //   state.isLoading = true;
+    // },
+    // [fetchContacts.fulfilled]: (state, { payload }) => {
+    //   state.isLoading = false;
+    //   state.items = payload;
+    // },
     // [fetchContacts.rejected]: () => { },
-
-    [addContacts.pending]: state => {
-      state.isLoading = true;
-    },
-    [addContacts.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.items.push(payload);
-    },
+    // [addContacts.pending]: state => {
+    //   state.isLoading = true;
+    // },
+    // [addContacts.fulfilled]: (state, { payload }) => {
+    //   state.isLoading = false;
+    //   state.items.push(payload);
+    // },
     // [addContacts.rejected]: () => { },
-
-    [deleteContacts.pending]: state => {
-      state.isLoading = true;
-    },
-    [deleteContacts.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
-      state.items = state.items.filter(el => el.id !== payload.id);
-    },
+    // [deleteContacts.pending]: state => {
+    //   state.isLoading = true;
+    // },
+    // [deleteContacts.fulfilled]: (state, { payload }) => {
+    //   state.isLoading = false;
+    //   state.items = state.items.filter(el => el.id !== payload.id);
+    // },
     // [deleteContacts.rejected]: () => {},
   },
 });
