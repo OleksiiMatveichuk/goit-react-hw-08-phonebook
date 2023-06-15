@@ -2,7 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import Loader from './Loader';
+import { Loader } from './Loader';
+import { Layout } from './Layout';
 
 const Register = lazy(() => import('pages/Register'));
 const LogIn = lazy(() => import('pages/LogIn'));
@@ -22,10 +23,12 @@ export const App = () => {
     >
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/contacts" element={<Contacts />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/" element={<Layout />}>
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<LogIn />} />
+            <Route path="contacts" element={<Contacts />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Route>
         </Routes>
       </Suspense>
     </div>

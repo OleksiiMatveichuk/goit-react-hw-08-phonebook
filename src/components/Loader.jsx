@@ -1,6 +1,6 @@
 import { Audio } from 'react-loader-spinner';
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <div
       style={{
@@ -26,4 +26,4 @@ const Loader = () => {
     </div>
   );
 };
-export default Loader;
+// export default Loader;
