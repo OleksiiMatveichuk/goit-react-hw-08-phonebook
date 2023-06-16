@@ -6,18 +6,18 @@ import { logIn } from 'service/phoneboockAPI';
 import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'name':
-        setName(value);
-        break;
       case 'email':
         setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
         break;
       default:
         break;
@@ -27,32 +27,20 @@ const LogIn = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const user = { name, email };
+      const user = { email, password };
       await dispatch(logIn(user)).unwrap();
-      navigate('/contacts', { replace: true });
-      setName('');
+      navigate('/', { replace: true });
       setEmail('');
-    } catch (error) {}
+      setPassword('');
+    } catch (error) {
+      console.log('A, A, A, try again!', error);
+    }
   };
 
   return (
     <>
       <p>LogIn</p>
       <form onSubmit={handleSubmit}>
-        <InputGroup className="mb-3">
-          <InputGroup.Text id="inputGroup-sizing-default">Name</InputGroup.Text>
-          <Form.Control
-            aria-label="Default"
-            aria-describedby="inputGroup-sizing-default"
-            type="text"
-            name="name"
-            value={name}
-            // pattern="^[a-zA-Z]+(?:\s+[a-zA-Z]+)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-            onChange={handleChange}
-          />
-        </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text id="inputGroup-sizing-default">
             Email
@@ -65,6 +53,22 @@ const LogIn = () => {
             value={email}
             // pattern="^\+[1-9]{1}[0-9]{3,14}$"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            onChange={handleChange}
+          />
+        </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Text id="inputGroup-sizing-default">
+            Password
+          </InputGroup.Text>
+          <Form.Control
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+            type="password"
+            name="password"
+            value={password}
+            // pattern="^[a-zA-Z]+(?:\s+[a-zA-Z]+)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             onChange={handleChange}
           />

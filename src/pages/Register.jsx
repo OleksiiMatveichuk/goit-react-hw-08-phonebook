@@ -33,12 +33,12 @@ const Register = () => {
     try {
       const user = { name, email, password };
       await dispatch(registration(user)).unwrap();
-      navigate('/contacts', { replace: true });
+      navigate('/', { replace: true });
       setName('');
       setEmail('');
       setPassword('');
     } catch (error) {
-      console.log('A, A, A,', error.message);
+      console.log('A, A, A, try again!', error);
     }
   };
 

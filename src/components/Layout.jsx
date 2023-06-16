@@ -1,21 +1,55 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink, Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import { selectIsLoggedIn } from 'redux/authSelectors';
+import { logOut } from 'service/phoneboockAPI';
+import image from '../image/phoneBook.svg';
 
 export const Layout = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(logOut());
+  };
+
   return (
     <>
       <Navbar bg="light" variant="light">
         <Container>
           <Navbar.Brand href="">
-            PhoneBook
-            {/* <svg width="18px" height="18px">
-              <use href="../image/phoneBook.svg"></use>
-            </svg> */}
+            <Link to={'/'}>
+              {/* PhoneBook */}
+              <img src={image} style={{ width: '30px' }} />
+              {/* <svg width="18px" height="18px">
+                <use href={image}></use>
+              </svg> */}
+            </Link>
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="">
+            {isLoggedIn ? (
+              <>
+                <Nav.Link href="">
+                  <NavLink to={'/contacts'}>MyContacts</NavLink>
+                </Nav.Link>
+                <button onClick={handleClick}>
+                  logOut
+                  {/* <NavLink to={'/'}>LogOut</NavLink> */}
+                </button>
+              </>
+            ) : (
+              <>
+                <Nav.Link href="">
+                  <NavLink to={'/register'}>Register</NavLink>
+                </Nav.Link>
+                <Nav.Link href="">
+                  <NavLink to={'/login'}>LogIn</NavLink>
+                </Nav.Link>
+              </>
+            )}
+            {/* <Nav.Link href="">
               <NavLink to={'/register'}>Register</NavLink>
             </Nav.Link>
             <Nav.Link href="">
@@ -23,7 +57,7 @@ export const Layout = () => {
             </Nav.Link>
             <Nav.Link href="">
               <NavLink to={'/contacts'}>Contacts</NavLink>
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>

@@ -1,15 +1,15 @@
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-// import { addContacts } from 'service/phoneboockAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContacts } from 'service/phoneboockAPI';
 import { selectContacts } from 'redux/selectors';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
   const handleChange = e => {
@@ -38,8 +38,8 @@ export const ContactForm = () => {
       alert('Contact already exist');
       return;
     }
-    // const contact = { name, number };
-    // dispatch(addContacts(contact));
+    const contact = { name, number };
+    dispatch(addContacts(contact));
 
     setName('');
     setNumber('');
