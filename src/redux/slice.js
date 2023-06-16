@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts } from 'service/phoneboockAPI';
-import { addContacts, deleteContacts } from 'service/phoneboockAPI';
+// import { fetchContacts } from 'service/phoneboockAPI';
+// import { addContacts, deleteContacts } from 'service/phoneboockAPI';
 
 const initialState = {
   items: [],

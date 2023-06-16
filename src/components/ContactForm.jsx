@@ -9,7 +9,7 @@ export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
   const handleChange = e => {
@@ -38,7 +38,7 @@ export const ContactForm = () => {
       alert('Contact already exist');
       return;
     }
-    const contact = { name, number };
+    // const contact = { name, number };
     // dispatch(addContacts(contact));
 
     setName('');
