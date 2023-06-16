@@ -1,3 +1,5 @@
+import { registration } from 'service/phoneboockAPI';
+
 const { createSlice } = require('@reduxjs/toolkit');
 
 const initialState = {
@@ -9,7 +11,13 @@ const initialState = {
 const authSlise = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: {},
+  extraReducers: {
+    [registration.fulfilled]: (state, { payload }) => {
+      state.user = payload.user;
+      state.token = payload.token;
+      state.isLoggedIn = true;
+    },
+  },
 });
 
 export const authReducer = authSlise.reducer;

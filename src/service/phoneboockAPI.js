@@ -15,6 +15,18 @@ export const registration = createAsyncThunk(
   }
 );
 
+export const logIn = createAsyncThunk(
+  'auth/logIn',
+  async (user, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/login', user);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 // export const fetchContacts = createAsyncThunk(
 //   'contacts/getAll',
 //   async (_, { rejectWithValue }) => {
