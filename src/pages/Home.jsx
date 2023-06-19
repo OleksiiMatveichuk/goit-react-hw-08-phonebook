@@ -6,15 +6,15 @@ const Home = () => {
   const name = useSelector(selectUserName);
 
   return isLoggedIn ? (
-    <>
+    <section className="home">
       <h2>Welcome back {name}!</h2>
-    </>
+    </section>
   ) : (
-    <>
+    <section className="home">
       <h2>
         Hello User! <br /> Are you registered?
       </h2>
-    </>
+    </section>
   );
 };
 export default Home;

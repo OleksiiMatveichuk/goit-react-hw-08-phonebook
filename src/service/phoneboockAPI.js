@@ -12,16 +12,6 @@ const token = {
   },
 };
 
-// const publishAxios = axios.create({
-//   baseURL: 'https://connections-api.herokuapp.com',
-// });
-// const privatAxios = axios.create({
-//   baseURL: 'https://connections-api.herokuapp.com',
-//   headers: {
-//     Authorization: 'token',
-//   }
-// })
-
 export const registration = createAsyncThunk(
   'auth/registration',
   async (user, { rejectWithValue }) => {

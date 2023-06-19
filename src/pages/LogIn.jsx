@@ -30,7 +30,7 @@ const LogIn = () => {
       setEmail('');
       setPassword('');
     } catch (error) {
-      console.log('A, A, A, try again!', error);
+      console.log('Try again!', error);
     }
   };
 
