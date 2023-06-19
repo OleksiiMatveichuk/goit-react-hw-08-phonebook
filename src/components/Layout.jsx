@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/authSelectors';
 import { logOut } from 'service/phoneboockAPI';
-import image from '../image/phoneBook.svg';
 
 export const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
