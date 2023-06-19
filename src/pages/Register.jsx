@@ -3,14 +3,12 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registration } from 'service/phoneboockAPI';
-import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -28,12 +26,11 @@ const Register = () => {
     }
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
     try {
       const user = { name, email, password };
-      await dispatch(registration(user)).unwrap();
-      navigate('/', { replace: true });
+      dispatch(registration(user));
       setName('');
       setEmail('');
       setPassword('');

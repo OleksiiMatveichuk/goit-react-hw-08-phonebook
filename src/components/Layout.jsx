@@ -21,8 +21,8 @@ export const Layout = () => {
         <Container>
           <Navbar.Brand href="">
             <Link to={'/'}>
-              {/* PhoneBook */}
-              <img src={image} style={{ width: '30px' }} />
+              PhoneBook
+              {/* <img src={image} alt="logo" style={{ width: '30px' }} /> */}
               {/* <svg width="18px" height="18px">
                 <use href={image}></use>
               </svg> */}

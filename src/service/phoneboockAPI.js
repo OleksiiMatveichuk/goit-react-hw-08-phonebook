@@ -60,6 +60,25 @@ export const logOut = createAsyncThunk(
   }
 );
 
+export const refresh = createAsyncThunk(
+  'auth/refresh',
+  async (_, { rejectWithValue, getState }) => {
+    const {
+      auth: { token: prevToken },
+    } = getState();
+    if (!token) {
+      return rejectWithValue();
+    }
+    try {
+      token.set(prevToken);
+      const { data } = await axios.get('/users/current');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchContacts = createAsyncThunk(
   'contacts/getAll',
   async (_, { rejectWithValue }) => {
